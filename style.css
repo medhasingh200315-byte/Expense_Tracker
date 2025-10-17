@@ -1,0 +1,142 @@
+/*
+ * Expense Tracker Stylesheet (style.css)
+ * Defines the visual appearance, color palette, and responsive layout.
+ */
+
+/* --- CSS Variables (Dark Theme) --- */
+:root { 
+    --bg:#0f172a;           /* Main background: Dark Blue */
+    --fg:#e5e7eb;           /* Foreground text: Light Gray */
+    --muted:#94a3b8;        /* Muted text/labels */
+    --border:#243244;       /* Border/Separator lines */
+    --accent:#22c55e;       /* Primary action/Success: Green */
+    --danger:#ef4444;       /* Danger/Delete: Red */
+}
+
+/* --- Global Reset and Base Styles --- */
+* { box-sizing: border-box; }
+body { 
+    margin:0; 
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; 
+    background: var(--bg); 
+    color: var(--fg); 
+}
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 24px; 
+}
+.muted { color: var(--muted); }
+.card { 
+    border:1px solid var(--border); 
+    border-radius:10px; 
+    padding:16px; 
+}
+.spacer { height:8px; }
+.right { text-align:right; }
+
+/* --- Header and Utility Layouts --- */
+header { 
+    display:flex; 
+    gap:16px; 
+    justify-content:space-between; 
+    align-items:center; 
+    margin-bottom:20px; 
+}
+h1 { margin:0; font-size:24px; }
+
+.section-title { 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    margin:8px 0 12px; 
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+.toolbar { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* --- Grid Layouts --- */
+.grid { display:grid; gap:12px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 900px) { 
+    .grid-3 { grid-template-columns: 1fr; } 
+    .summary-grid { grid-template-columns: 1fr 1fr !important; } /* Overwrite inline style */
+}
+
+/* --- Form Element Styling --- */
+label { 
+    display:block; 
+    font-size:12px; 
+    color:var(--muted); 
+    margin-bottom:6px; 
+}
+input, select, textarea { 
+    width:100%; 
+    padding:10px 12px; 
+    background:#0b1220; 
+    color:var(--fg); 
+    border:1px solid var(--border); 
+    border-radius:8px; 
+    outline:none; 
+}
+input:focus, select:focus, textarea:focus { border-color:#3b82f6; }
+
+/* --- Button Styling --- */
+button { 
+    display:inline-flex; 
+    align-items:center; 
+    gap:8px; 
+    padding:10px 14px; 
+    border-radius:8px; 
+    cursor:pointer; 
+    border:1px solid var(--border); 
+    background:#0b1220; 
+    color:var(--fg); 
+}
+button.primary { 
+    background: var(--accent); 
+    border:none; 
+    color:#052e15; 
+    font-weight:600; 
+}
+button.ghost { background: transparent; }
+button.danger { 
+    background: var(--danger); 
+    border:none; 
+    color:#2b0000; 
+    font-weight:600; 
+}
+button:disabled { opacity:0.6; cursor:not-allowed; }
+
+/* --- Table Styles --- */
+table { width:100%; border-collapse:collapse; }
+th, td { text-align:left; padding:10px 8px; border-bottom:1px solid var(--border); }
+tbody tr:nth-child(odd) { background:#0b1220; } /* Zebra striping */
+th { color:var(--muted); font-size:12px; }
+tfoot td { font-weight:700; }
+.row-actions { display:flex; gap:6px; justify-content:flex-end; }
+.chip { 
+    display:inline-block; 
+    padding:2px 8px; 
+    border-radius:999px; 
+    border:1px solid var(--border); 
+    font-size:12px; 
+    color:var(--muted); 
+}
+
+/* --- Summary Grid Styles --- */
+.summary-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+.summary-card { 
+    border:1px solid var(--border); 
+    border-radius:8px; 
+    padding:12px; 
+}
+.summary-card .label { font-size:12px; color:var(--muted); }
+.summary-card .value { font-size:18px; font-weight:700; }
